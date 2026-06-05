@@ -1,13 +1,6 @@
 <laravel-boost-guidelines>
 === foundation rules ===
 
-# Architecture
-
-1. Laravel 13
-2. Livewire
-3. Clean Code
-4. Layered (Repository, Service, Response, Controller)
-
 # Laravel Boost Guidelines
 
 The Laravel Boost guidelines are specifically curated by Laravel maintainers for this application. These guidelines should be followed closely to ensure the best experience when building Laravel applications.
@@ -95,7 +88,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 - Execute PHP in app context for debugging and testing code. Do not create models without user approval, prefer tests with factories instead. Prefer existing Artisan commands over custom tinker code.
 - Always use single quotes to prevent shell expansion: `php artisan tinker --execute 'Your::code();'`
-    - Double quotes for PHP strings inside: `php artisan tinker --execute 'User::where("active", true)->count();'`
+  - Double quotes for PHP strings inside: `php artisan tinker --execute 'User::where("active", true)->count();'`
 
 === php rules ===
 

@@ -3,7 +3,7 @@
 use App\Http\Controllers\LatihanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
-use GuzzleHttp\Middleware;
+use App\Http\Middleware\PreventBack;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -35,7 +35,11 @@ Route::post('action-login', [LoginController::class, 'actionLogin'])->name('acti
 Route::post('action-logout', [LoginController::class, 'actionLogout'])->name('action-logout');
 
 
-//dashboard
-Route::get('dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+Route::middleware(['auth', PreventBack::class])->group(function () {
+    Route::get('dashboard', function () {
+        return view('dashboard.index');
+    });
+    // GET, DELETE, DESTROY, UPDATE
+    Route::resource('user', \App\Http\Controllers\UserController::class);
+    Route::resource('role', \App\Http\Controllers\RoleController::class);
+});
