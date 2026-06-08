@@ -7,6 +7,7 @@ use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
+
 class UserController extends Controller
 {
     /**
