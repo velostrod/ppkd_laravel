@@ -44,4 +44,7 @@ Route::middleware(['auth', PreventBack::class])->group(function () {
     Route::resource('role', \App\Http\Controllers\RoleController::class);
 
     Route::resource('locker', \App\Http\Controllers\LockerController::class);
+    Route::resource('major', \App\Http\Controllers\MajorController::class);
+    Route::resource('key', \App\Http\Controllers\KeyController::class);
+    Route::resource('student', \App\Http\Controllers\StudentController::class);
 });
