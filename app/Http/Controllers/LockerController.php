@@ -45,7 +45,7 @@ class LockerController extends Controller
             'status' => $request->status
         ]);
 
-        Alert::success('Berhasil', 'Data berhasil ditambah!');
+        Alert::success('sucess', 'Locker input success!');
         return redirect()->route('locker.index');
     }
 
@@ -83,7 +83,7 @@ class LockerController extends Controller
         $data->update(
             $request->all()
         );
-        Alert::success('Berhasil', 'Data Berhasil di ubah!');
+        Alert::success('Success', 'Locker has been update!');
         return redirect()->route('locker.index');
     }
 
@@ -93,7 +93,7 @@ class LockerController extends Controller
     public function destroy(string $id)
     {
         Locker::find($id)->delete();
-        Alert::success('Berhasil', 'Data Berhasil di ubah!');
+        Alert::success('Success', 'Locker has been delete');
         return redirect()->route('locker.index');
     }
 }
