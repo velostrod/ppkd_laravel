@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Create New Student')
+@section('title', 'Create New Instructor')
 
 @section('content')
     <div class="card">
@@ -7,41 +7,31 @@
             <h3 class="card-title">{{ $title ?? '' }}</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('student.store') }}" method="POST">
+            <form action="{{ route('instructor.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="">Major </label>
                     <select name="major_id" id="" class="form-control">
                         <option value="">Select One</option>
                         @foreach ($majors as $major)
-                            <option @selected(old('major_id') == $major->id) value="{{ $major->id }}">
-                                {{ $major->name }}
-                            </option>
+                            <option value="{{ $major->id }}">{{ $major->name }} </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="mb-3">
                     <label for="">Name *</label><br>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror"
-                        placeholder="Enter your name" name="name" required value="{{ @old('name') }}">
-                    @error('name')
-                        <div class="invalid-feeback">{{ $message }}</div>
-                    @enderror
+                    <input type="text" class="form-control" placeholder="Enter your name" name="name" required>
                 </div>
                 <div class="mb-3">
-                    <label for="">Phone *</label><br>
-                    <input type="number" class="form-control @error('phone') is-invalid @enderror"
-                        placeholder="Enter phone number" name="phone">
-                    @error('phone')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+                    <label for="">Phone </label><br>
+                    <input type="number" class="form-control" placeholder="Enter phone number" name="phone" required>
                 </div>
                 <div class="mb-3">
                     <label for="">Email *</label><br>
                     <input type="email" class="form-control" placeholder="Enter your email" name="email" required>
                 </div>
                 <div class="mb-3">
-                    <label for="">Password *</label><br>
+                    <label for="">password </label><br>
                     <input type="password" class="form-control" placeholder="Enter your password" name="password" required>
                 </div>
                 <button class="btn btn-outline-primary" type="submit">Save</button>

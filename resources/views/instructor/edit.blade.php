@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Edit Student')
+@section('title', 'Edit Instructor')
 
 @section('content')
     <div class="card">
@@ -7,7 +7,7 @@
             <h3 class="card-title">{{ $title ?? '' }}</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('student.update', $edit->id) }}" method="POST">
+            <form action="{{ route('instructor.update', $edit->id) }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
@@ -33,13 +33,13 @@
                 </div>
                 <div class="mb-3">
                     <label for="">Email </label><br>
-                    <input type="email" class="form-control" placeholder="Enter name" name="email"
+                    <input type="email" class="form-control" placeholder="Enter email" name="email"
                         value="{{ $edit->user->email }}">
                 </div>
                 <div class="mb-3">
                     <label for="">Password </label><br>
-                    <input type="password" class="form-control" placeholder="Enter Password" name="passwrod"
-                        value="{{ $edit->password }}">
+                    <input type="password" class="form-control" placeholder="Enter password" name="password"
+                        value="{{ $edit->phone }}">
                 </div>
 
                 <button class="btn btn-outline-primary" type="submit">Save</button>
