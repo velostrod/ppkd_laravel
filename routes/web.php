@@ -40,6 +40,8 @@ Route::middleware(['auth', PreventBack::class])->group(function () {
         return view('dashboard.index');
     })->name('dashboard');
     // GET, DELETE, DESTROY, UPDATE
+
+    Route::resource('menu', \App\Http\Controllers\MenuController::class);
     Route::resource('user', \App\Http\Controllers\UserController::class);
     Route::resource('role', \App\Http\Controllers\RoleController::class);
 
@@ -48,4 +50,5 @@ Route::middleware(['auth', PreventBack::class])->group(function () {
     Route::resource('key', \App\Http\Controllers\KeyController::class);
     Route::resource('student', \App\Http\Controllers\StudentController::class);
     Route::resource('instructor', \App\Http\Controllers\InstructorController::class);
+    Route::resource('user-role', \App\Http\Controllers\UserRoleController::class);
 });

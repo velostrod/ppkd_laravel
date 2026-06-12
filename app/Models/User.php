@@ -22,11 +22,20 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     public function profiles()
     {
         return $this->hasOne(Profile::class);
+    }
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_roles');
     }
 
     /**

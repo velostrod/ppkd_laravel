@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'name' => 'M Fajri B K',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('12345678'),
+            'role_id' => 1
         ]);
     }
 }

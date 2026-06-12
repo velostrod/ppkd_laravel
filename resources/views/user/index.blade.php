@@ -13,6 +13,7 @@
                         <th>No</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -23,14 +24,20 @@
                             <td> {{ $user->name ?? '' }}</td>
                             <td> {{ $user->email }}</td>
                             <td>
+                                @foreach ($user->roles as $role)
+                                    <span class="badge bg-info">{{ $role->name ?? '-' }}</span>
+                                @endforeach
+                            </td>
+                            <td>
                                 <a href="{{ route('user.edit', $user->id) }}" class="btn btn-outline-success icon">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="d-inline">
+                                <form action="{{ route('user.destroy', $user->id) }}" method="POST"
+                                    class="d-inline form-delete">
                                     @csrf
                                     @method('DELETE')
 
-                                    <Button class="btn btn-outline-danger">
+                                    <Button type="button" class="btn btn-outline-danger icon btn-delete">
                                         <i class="bi bi-trash-fill"></i>
                                     </Button>
                                 </form>
@@ -42,5 +49,31 @@
             </table>
         </div>
     </div>
+    <script>
+        document.addEventListener('click', function(e) {
+
+            const button = e.target.closest('.btn-delete');
+
+            if (button) {
+                e.preventDefault();
+                const form = button.closest('.form-delete');
+
+                Swal.fire({
+                    title: 'Are you sure want to delete this user??',
+                    text: "Deleted user data cannot be recovered!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, im sure!',
+                    cancelButtonText: 'Cancel'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            }
+        });
+    </script>
 
 @endsection
