@@ -10,6 +10,11 @@
             <form action="{{ route('user.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
+                    <label for="">Code *</label>
+                    <input type="name" class="form-control" placeholder="Enter name" name="code"
+                        value="{{ $userCode }}" readonly>
+                </div>
+                <div class="mb-3">
                     <label for="">Name *</label>
                     <input type="name" class="form-control" placeholder="Enter name" name="name" required>
                 </div>
