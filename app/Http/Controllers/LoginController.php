@@ -23,6 +23,10 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect('dashboard');
         }
+        // perbaikan: berikan pesan error jika kombinasi email/password salah
+        return back()->withErrors([
+            'email' => 'Email atau Password yang ada masukan salah.',
+        ])->onlyInput('email'); // Menyinpan  input email lama agar user tidak perlu mengetik ulang
     }
 
     public function actionLogout(Request $request)
